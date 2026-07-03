@@ -17,6 +17,7 @@ This repository collects R-focused workflows, utilities, and examples for integr
   - `llm_batch_requests.R`: Helpers for batched calls over data frames (e.g., news posts, comments).
 - `data/`
   - `README_data.md`: Notes on expected data formats (CSV), privacy/anonymization, and example schemas.
+  - `example_posts.csv`: Small synthetic dataset of COVID-19 news posts and reaction counts for quick testing.
 - `examples/`
   - `covid_news_reactions_llm_api.R`: Example pipeline inspired by PhD thesis data (Facebook reactions & COVID-19 news).
   - `simple_prompting_demo.R`: Minimal reproducible example for first-time LLM API integration in R.
@@ -32,9 +33,25 @@ See `data/README_data.md` for details.
 ## Cross-links to Related Repositories
 
 - LLM text analysis workflows in R: [llm-text-analysis-r](https://github.com/sawoodanwar/llm-text-analysis-r)
+- BERTopic topic modeling workflows: [bertopic-media-topics](https://github.com/sawoodanwar/bertopic-media-topics)
 - Profile and other research repositories: [GitHub profile](https://github.com/sawoodanwar)
 
-You may also cross-reference existing NLP/topic modeling or thesis-related repositories manually as they evolve.
+Together with `llm-text-analysis-r` and `bertopic-media-topics`, this repository is part of a small computational communication toolkit for LLMs and topic modeling.
+
+## Example Usage
+
+A minimal example of running batched LLM calls over the synthetic COVID-19 news posts:
+
+```r
+library(readr)
+source("R/llm_api_client.R")
+source("R/llm_api_error_handling.R")
+source("R/llm_batch_requests.R")
+
+posts <- read_csv("data/example_posts.csv")
+results <- llm_batch_call(posts, text_col = "text", model = "gpt-4.1-mini")
+head(results$llm_output)
+```
 
 ## Getting Started
 
