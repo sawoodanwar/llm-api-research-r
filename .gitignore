@@ -1,0 +1,35 @@
+# LLM API Research with R - .gitignore
+
+# R/RStudio
+.Rhistory
+.RData
+.Rproj.user/
+.Rproj
+
+# R environment and local configuration
+.Renviron
+.Rprofile
+
+# Data files
+*.csv
+*.tsv
+*.xlsx
+
+# Logs and caches
+logs/*
+*.log
+
+# Python/R reticulate
+*.pyc
+__pycache__/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.local
+
+# Do not ignore example small synthetic datasets in data/
+!data/example_posts.csv
